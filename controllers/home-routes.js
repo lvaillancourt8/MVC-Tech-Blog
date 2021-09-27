@@ -7,18 +7,18 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
-    //   include: [
-    //     {
-    //       model: Painting,
-    //       attributes: ['filename', 'description'],
-    //     },
-    //   ],
+      // include: [
+      //   {
+      //     model: Painting,
+      //     attributes: ['filename', 'description'],
+      //   },
+      // ],
     });
 
     const posts = dbPostData.map((post) =>
       post.get({ plain: true })
     );
-
+    console.log(posts);
     res.render('homepage', {
       posts,
       loggedIn: req.session.loggedIn,
