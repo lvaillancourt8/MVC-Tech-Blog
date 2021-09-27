@@ -1,8 +1,9 @@
-<section class="card">
-  <a href="/post/{{id}}">
-    <header>{{title}}</header>
-  </a>
-  
-  <p>{{post_date_created}}</p>
-
-</section>
+<div class="card border-dark">
+  <div class="card-body">
+    <a href="/post/{{id}}">
+      <h5 class="card-title">{{title}}</h5>
+    </a>
+    <p class="card-text">{{contents}}</p>
+    {{!-- <a href="#" class="btn btn-primary">Button</a> --}}
+  </div>
+</div>
