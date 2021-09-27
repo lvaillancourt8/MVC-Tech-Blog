@@ -1,27 +1,31 @@
 const { Post } = require('../models');
 
-// const postdata = [
-//   {
-//     name: 'Printemps',
-//     starting_date: 'April 20, 2021 07:00:00',
-//     ending_date: 'June 21, 2021 17:00:00',
-//   },
-//   {
-//     name: 'Sommer',
-//     starting_date: 'June 22, 2021 09:00:00',
-//     ending_date: 'September 22, 2021 22:00:00',
-//   },
-//   {
-//     name: 'Herfst',
-//     starting_date: 'September 23, 2021 08:30:00',
-//     ending_date: 'December 21, 2021 20:30:00',
-//   },
-//   {
-//     name: 'Invierno',
-//     starting_date: 'December 22, 2020 11:00:00',
-//     ending_date: 'March 19, 2021 19:00:00',
-//   },
-// ];
+const postdata = [
+  {
+    title: 'What is MVC',
+    post_date_created: 'September 20, 2021 13:00:00',
+    contents: 'The Model-View-Controller (MVC) framework is an architectural pattern that adheres to the separation of concerns principle. The Model stores data and data-related logic.    The View is in charge of UI/UX concerns, or what a user will see and interact with.The Controller is the interface between Models and Views. It processes requests from the View, uses the Model to manipulate data, and sends data to the View to render.',
+    post_creator_id: 1,
+  },
+  {
+    title: 'What is OOP',
+    post_date_created: 'September 21, 2021 08:00:00',
+    contents: 'Object-Oriented Programming (OOP) is when code is organized using objects instead of functions. Objects can inherit properties and methods from other objects. Multiple objects can be created from the same blueprint classes or constructor functions.',
+    post_creator_id: 1,
+  },
+  {
+    title: 'What is SQL',
+    post_date_created: 'September 22, 2021 12:00:00',
+    contents: 'SQL stands for Structured Query Language.  With SQL, we use a query, or a structured inquiry, to interact with data that is stored in a database. You can use a SQL query to create, read, update, and delete data in a database.',
+    post_creator_id: 2,
+  },
+  {
+    title: 'What is Express.js',
+    post_date_created: 'September 23, 2021 18:00:00',
+    contents: 'Express.js is a lightweight framework for Node.js that allows you to write APIs, handle HTTP requests, and implement middleware in your server-side application. Express.js exists on the back end of an application. Express.js is considered the de facto standard for creating routes in Node.js applications.',
+    post_creator_id: 2,
+  },
+];
 
 const seedPost = () => Post.bulkCreate(postdata);
 

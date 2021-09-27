@@ -1,32 +1,32 @@
-// const router = require('express').Router();
-// const { Gallery, Painting } = require('../models');
-// // TODO: Import the custom middleware
+const router = require('express').Router();
+const { Post, User, Comment } = require('../models');
+// TODO: Import the custom middleware
 
-// // GET all galleries for homepage
-// router.get('/', async (req, res) => {
-//   try {
-//     const dbGalleryData = await Gallery.findAll({
-//       include: [
-//         {
-//           model: Painting,
-//           attributes: ['filename', 'description'],
-//         },
-//       ],
-//     });
+// GET all posts for homepage
+router.get('/', async (req, res) => {
+  try {
+    const dbPostData = await Post.findAll({
+    //   include: [
+    //     {
+    //       model: Painting,
+    //       attributes: ['filename', 'description'],
+    //     },
+    //   ],
+    });
 
-//     const galleries = dbGalleryData.map((gallery) =>
-//       gallery.get({ plain: true })
-//     );
+    const posts = dbPostData.map((post) =>
+      post.get({ plain: true })
+    );
 
-//     res.render('homepage', {
-//       galleries,
-//       loggedIn: req.session.loggedIn,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+    res.render('homepage', {
+      posts,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // // GET one gallery
 // // TODO: Replace the logic below with the custom middleware
