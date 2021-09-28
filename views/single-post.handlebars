@@ -1,0 +1,30 @@
+<div class="card border-dark">
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Written by: {{post.user.username}} | Posted On: {{format_date post.post_date_created}}</h6>
+    <p class="card-text">{{post.contents}}</p>
+  </div>
+</div>
+{{#each comment}}
+<div class="card border-dark">
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Written by: {{post.user.username}} | Posted On: {{format_date post.post_date_created}}</h6>
+    <p class="card-text">{{post.contents}}</p>
+  </div>
+</div>
+{{/each}}
+
+<div class="row justify-space-between-md">
+  <div class="comment-card">
+    <h2 class="page-title">Leave a Comment</h2>
+    <form class="form comment-form">
+      <div class="form-group">
+        <label for="text-comment">Enter your comment here:</label>
+        <input class="form-input" type="text" id="text-comment" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
