@@ -5,7 +5,8 @@
     <p class="card-text">{{post.contents}}</p>
   </div>
 </div>
-{{#each comment}}
+
+{{!-- {{#each comment}}
 <div class="card border-dark">
   <div class="card-body">
     <h5 class="card-title">{{post.title}}</h5>
@@ -13,8 +14,14 @@
     <p class="card-text">{{post.contents}}</p>
   </div>
 </div>
-{{/each}}
+{{/each}} --}}
 
+{{#unless loggedIn}}
+<p>Want to leave a comment?</p>
+<p><a href="/login">Login</a> or <a href="/signup">sign up for an account</a></p> 
+{{/unless}}
+
+{{#if loggedIn}}
 <div class="row justify-space-between-md">
   <div class="comment-card">
     <h2 class="page-title">Leave a Comment</h2>
@@ -28,3 +35,4 @@
       </div>
     </form>
   </div>
+  {{/if}}

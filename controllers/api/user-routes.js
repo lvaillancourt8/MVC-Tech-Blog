@@ -1,21 +1,22 @@
 const router = require('express').Router();
+const bcrypt = require('bcryptjs');
 const { User } = require('../../models');
 
 // CREATE new user
 router.post('/signup', async (req, res) => {
   try {
-    const dbUserData = await User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    });
+    console.log(req.body);
+    const newUser = req.body;
+    // hash the password from 'req.body' and save to newUser
+    newUser.password = await bcrypt.hash(req.body.password, 10);
+    // create the newUser with the hashed password and save to DB
+    const userData = await User.create(newUser);
+    res.status(200).json(userData);
 
     req.session.save(() => {
       req.session.loggedIn = true;
-      req.session.userId = dbUserData.id;
-      req.session.username = dbUserData.username;     
-
-      res.status(200).json({user: dbUserData});
+      req.session.userId = userData.id;
+      req.session.username = userData.username;
     });
   } catch (err) {
     console.log(err);
@@ -26,35 +27,36 @@ router.post('/signup', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
-    const dbUserData = await User.findOne({
-      where: {
-        email: req.body.email,
-      },
-    });
-
-    if (!dbUserData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+    // we search the DB for a user with the provided email
+    const userData = await User.findOne({ where: { email: req.body.email } });
+    
+    if (!userData) {
+      // the error message shouldn't specify if the login failed because of wrong email or password
+      res.status(404).json({ message: 'Login failed. Please try again!' });
       return;
     }
-
-    const validPassword = await dbUserData.checkPassword(req.body.password);
-
+    // use `bcrypt.compare()` to compare the provided password and the hashed password
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      userData.password
+    )
+    // if they do not match, return error message
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+      res.status(400).json({ message: 'Login failed. Please try again!' });
       return;
     }
 
+    console.log(req.session);
     req.session.save(() => {
       req.session.loggedIn = true;
-      req.session.userId = dbUserData.id;
-      req.session.username = dbUserData.username;
-      res
-        .status(200).json({ user: dbUserData, message: 'You are now logged in!' });
+      req.session.userId = userData.id;
+      req.session.username = userData.username;
     });
+    console.log(req.session);
+
+    // if they do match, return success message
+    res.status(200).json({ message: 'You are now logged in!' });
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

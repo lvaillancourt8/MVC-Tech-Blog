@@ -1,8 +1,8 @@
 const { User } = require('../models');
 const bcrypt = require('bcryptjs');
 
-var hash1 = bcrypt.hashSync('userpass1', 10);
-var hash2 = bcrypt.hashSync('userpass2', 10);
+var hash1 = bcrypt.hashSync('hash1');
+var hash2 = bcrypt.hashSync('hash2');
 
 const userdata = [
   {

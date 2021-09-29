@@ -8,11 +8,16 @@ body {
 }
 
 main {
-  margin-top: 75px;;
+  margin-top: 50px;;
 }
 
+#add-post {
+  margin: 30px;
+}
 
 .card {
   margin: 30px;
 }
+
+
 

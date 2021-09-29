@@ -1,0 +1,16 @@
+
+<h1>My Posts</h1>
+<p>Click on the title of a post to edit or delete.</p>
+
+{{#each posts as |post|}}
+<div class="card border-dark">
+  <div class="card-body">
+    <a href="/post/update/{{id}}">
+      <h5 class="card-title">{{title}}</h5>
+    </a>
+    <h6 class="card-subtitle mb-2 text-muted">Posted On: {{format_date post_date_created}}</h6>
+    <p class="card-text">{{contents}}</p>
+  </div>
+</div>
+{{/each}}
+<a href="/post"><button id="add-post" class="btn btn-primary" type="submit">Add a New Post</button></a>
