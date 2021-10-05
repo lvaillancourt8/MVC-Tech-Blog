@@ -73,7 +73,7 @@ router.get('/dashboard', async (req, res) => {
   try {
     const dbPostData = await Post.findAll({ 
       where: {
-        post_creator_id: 1
+        post_creator_id: 1,
       }
     });
     const posts = dbPostData.map((post) =>
