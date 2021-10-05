@@ -5,11 +5,11 @@
       <div class="form-group">
         <input type="hidden" id="post-id" value="{{post.id}}" />
         <label for="post-title">Post Title:</label>
-        <input class="form-input" type="text" id="post-title" value="{{title}}"/>
+        <input class="form-input" type="text" id="post-title" value="{{post.title}}"/>
       </div>
       <div class="form-group">
         <label for="post-text">Post Content:</label>
-        <textarea class="form-control rounded-0" id="post-text" rows="8">{{contents}}</textarea>
+        <textarea class="form-control rounded-0" id="post-text" rows="8">{{post.contents}}</textarea>
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Update</button>

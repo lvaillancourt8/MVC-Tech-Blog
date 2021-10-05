@@ -18,18 +18,19 @@ router.post('/', withAuth, async (req, res) => {
 
 router.get('/update/:id', withAuth, async (req, res) => {
   try {
-    const newPost = await Post.findAll({
-        where: {
-          id: req.params.id
-        }
-    });
+    const newPost = await Post.findByPk(req.params.id);
+    console.log(newPost);
     if(newPost) {
-      res.render('update-post');
+      const post = newPost.get({ plain: true});
+      res.render('update-post', {
+        post
+      });
     }
     else {
       res.status(404).end();
     }
-  } catch (err) {
+  }
+  catch (err) {
     res.status(400).json(err);
   }
 });
