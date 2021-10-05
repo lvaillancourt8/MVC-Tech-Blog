@@ -10,8 +10,8 @@
 <div class="card border-light">
   <div class="card-body">
     <h5 class="card-title">Comment</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Written by: {{post.comments.comment_creator_id}} | Posted On: {{post.comments.comment_date_created}}</h6>
-    <p class="card-text">{{post.comments.comment}}</p>
+    <h6 class="card-subtitle mb-2 text-muted">Written by: {{user.username}} | Posted On: {{format_date this.comment_date_created}}</h6>
+    <p class="card-text">{{this.comment}}</p>
   </div>
 </div>
 {{/each}}
