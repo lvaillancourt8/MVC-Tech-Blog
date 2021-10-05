@@ -25,8 +25,9 @@
 <div class="row justify-space-between-md">
   <div class="comment-card">
     <h2 class="page-title">Leave a Comment</h2>
-    <form class="form comment-form">
+    <form class="form comment-form" id="comment-form">
       <div class="form-group">
+        <input type="hidden" id="post-id" value="{{post.id}}" />
         <label for="text-comment">Enter your comment here:</label>
         <input class="form-input" type="text" id="text-comment" />
       </div>
@@ -36,3 +37,5 @@
     </form>
   </div>
   {{/if}}
+
+<script src="/js/comment.js"></script>
