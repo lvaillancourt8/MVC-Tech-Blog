@@ -74,32 +74,32 @@ router.get('/addpost', (req, res) => {
   res.render('add-post');
 });
 
-router.get('/updatepost/:id', async (req, res) => {
-  try {
-    const dbPostData = await Post.findByPk(req.params.id, {
-      include: [
-        User,
-        {
-          model: Comment
-        }
-      ],
-    });
-    if(dbPostData) {
-      console.log(dbPostData);
-      const post = dbPostData.get({ plain: true });    
-      res.render('update-post', { 
-      post,
-      loggedIn: req.session.loggedIn,
-     });
-    }else {
-      res.status(404).end();
-    }
+// router.get('/updatepost/:id', async (req, res) => {
+//   try {
+//     const dbPostData = await Post.findByPk(req.params.id, {
+//       include: [
+//         User,
+//         {
+//           model: Comment
+//         }
+//       ],
+//     });
+//     if(dbPostData) {
+//       console.log(dbPostData);
+//       const post = dbPostData.get({ plain: true });    
+//       res.render('update-post', { 
+//       post,
+//       loggedIn: req.session.loggedIn,
+//      });
+//     }else {
+//       res.status(404).end();
+//     }
 
 
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
