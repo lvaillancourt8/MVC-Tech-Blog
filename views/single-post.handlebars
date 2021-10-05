@@ -6,15 +6,15 @@
   </div>
 </div>
 
-{{!-- {{#each comment}}
-<div class="card border-dark">
+{{#each post.comments}}
+<div class="card border-light">
   <div class="card-body">
-    <h5 class="card-title">{{post.title}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Written by: {{post.user.username}} | Posted On: {{format_date post.post_date_created}}</h6>
-    <p class="card-text">{{post.contents}}</p>
+    <h5 class="card-title">Comment</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Written by: {{post.comments.comment_creator_id}} | Posted On: {{post.comments.comment_date_created}}</h6>
+    <p class="card-text">{{post.comments.comment}}</p>
   </div>
 </div>
-{{/each}} --}}
+{{/each}}
 
 {{#unless loggedIn}}
 <p>Want to leave a comment?</p>
