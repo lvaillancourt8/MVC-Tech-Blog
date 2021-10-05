@@ -1,13 +1,16 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models');
+const { Post, User } = require('../models');
 
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
 // GET all posts for a user
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
+      where: {
+        post_creator_id: req.session.userId
+      },
       include: [
         {
           model: User,
