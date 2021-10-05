@@ -24,7 +24,7 @@ router.get('/update/:id', withAuth, async (req, res) => {
         }
     });
     if(newPost) {
-      res.status(200).json(newPost);
+      res.render('update-post');
     }
     else {
       res.status(404).end();
@@ -33,6 +33,7 @@ router.get('/update/:id', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
 router.put('/update/:id', withAuth, async (req, res) => {
     try {
       const newPost = await Post.update(req.body, {
