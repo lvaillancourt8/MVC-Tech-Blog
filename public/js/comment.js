@@ -12,7 +12,7 @@ const commentFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        window.location.reload;
+        window.location.reload();
       } else {
         alert('Failed to post comment.');
       }

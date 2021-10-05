@@ -14,7 +14,7 @@ const commentdata = [
     post_id: 2,
   },
   {
-    comment: 'I love OOP!',
+    comment: 'I love SQL!',
     comment_date_created: 'September 22, 2021 16:00:00',
     comment_creator_id: 1,
     post_id: 3,
