@@ -3,10 +3,11 @@ const updateFormHandler = async (event) => {
   
     const title = document.querySelector('#post-title').value;
     const contents = document.querySelector('#post-text').value;
+    const id = document.querySelector('#post-id').value;
     console.log(title, contents);
   
     if (title && contents) {
-      const response = await fetch('/api/post/update/:id', {
+      const response = await fetch('/api/post/update/' + id, {
         method: 'PUT',
         body: JSON.stringify({ title, contents }),
         headers: { 'Content-Type': 'application/json' },
@@ -23,7 +24,9 @@ const updateFormHandler = async (event) => {
   const deleteFormHandler = async (event) => {
     event.preventDefault();
 
-      const response = await fetch('/api/post/delete/:id', {
+    const id = document.querySelector('#post-id').value;
+    
+      const response = await fetch('/api/post/delete/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       });

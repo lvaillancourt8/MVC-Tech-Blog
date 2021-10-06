@@ -10,7 +10,7 @@ router.post('/', withAuth, async (req, res) => {
         contents: req.body.contents,
         post_creator_id: req.session.userId,
     });
-    res.status(200).json(newPost);
+    res.render('dashboard');
   } catch (err) {
     res.status(400).json(err);
   }
