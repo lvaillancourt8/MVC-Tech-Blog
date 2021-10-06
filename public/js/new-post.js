@@ -20,8 +20,5 @@ const newPostFormHandler = async (event) => {
     }
   };
   
-  // document
-  //   .querySelector('#post-form')
-  //   .addEventListener('submit', newPostFormHandler);
   const update = document.querySelector('#post-form');
   update.addEventListener('submit', signupFormHandler);

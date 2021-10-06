@@ -20,7 +20,7 @@ router.get('/update/:id', withAuth, async (req, res) => {
   try {
     const newPost = await Post.findByPk(req.params.id);
     if(newPost) {
-      const post = newPost.get({ plain: true});
+      const post = await newPost.get({ plain: true});
       res.render('update-post', {
         post
       });
@@ -35,24 +35,42 @@ router.get('/update/:id', withAuth, async (req, res) => {
 });
 
 router.put('/update/:id', withAuth, async (req, res) => {
-    try {
-      const newPost = await Post.update(req.body, {
-          where: {
-            id: req.params.id
-          }
-      });
-      if(newPost) {
-        res.status(200).end();
+  try {
+    const updatePost = await Post.update({
+      title: req.body.title,
+      contents: req.body.contents,
+    }, {
+      where: {
+        id: req.params.id
       }
-      else {
-        res.status(404).end();
-      }
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
+    });
+    res.render('dashboard');
+  }
+  catch (err) {
+    res.status(400).json(err);
+  }
+});
 
-  router.delete('/:id', withAuth, async (req, res) => {
+// router.put('/:id', withAuth, async (req, res) => {
+//     try {
+//       console.log(req.body);
+//       const newPost = await Post.update(req.body, {
+//           where: {
+//             id: req.params.id
+//           }
+//       });
+//       if(newPost) {
+//         res.render('dashboard');
+//       }
+//       else {
+//         res.status(404).end();
+//       }
+//     } catch (err) {
+//       res.status(400).json(err);
+//     }
+//   });
+
+  router.delete('/delete/:id', withAuth, async (req, res) => {
     try {
       const deletePost = await Post.destroy({
         where: {
