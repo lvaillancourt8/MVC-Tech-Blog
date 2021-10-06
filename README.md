@@ -2,9 +2,9 @@
 Full Stack Bootcamp Week 14 - build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.
 
 ## Project Links
-Link to the GitHub Repository: [GitHub Repo]()
+Link to the GitHub Repository: [GitHub Repo](https://github.com/lvaillancourt8/MVC-Tech-Blog)
 
-Link to the Live App: [Live App]()
+Link to the Live App: [Live App](https://lv-tech-blog.herokuapp.com/)
 
 ## User Story
 
@@ -56,3 +56,4 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 
 The following images show the web application's appearance and functionality:
 
+![Screenshot 2021-10-06 103503](https://user-images.githubusercontent.com/55712456/136296677-9d4d9cbd-ec5b-4396-8917-eedb69df48c9.jpg)
