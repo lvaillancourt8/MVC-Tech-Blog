@@ -19,7 +19,6 @@ router.post('/', withAuth, async (req, res) => {
 router.get('/update/:id', withAuth, async (req, res) => {
   try {
     const newPost = await Post.findByPk(req.params.id);
-    console.log(newPost);
     if(newPost) {
       const post = newPost.get({ plain: true});
       res.render('update-post', {
