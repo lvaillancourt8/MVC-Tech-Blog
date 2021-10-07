@@ -37,12 +37,19 @@ User.init(
     },
   },
   {
-    hooks: {
-      async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hashSync(newUserData.password, 10);
-        return newUserData;
-      },
-    },
+    // hooks: {
+    //   async beforeCreate(newUserData) {
+    //     newUserData.password = await bcrypt.hashSync(newUserData.password, 10);
+        
+    //     req.session.save(() => {
+    //       req.session.loggedIn = true;
+    //       req.session.userId = newUserData.id;
+    //       req.session.username = newUserData.username;
+    //     });
+
+    //     return newUserData;
+    //   },
+    // },
     sequelize,
     timestamps: false,
     freezeTableName: true,

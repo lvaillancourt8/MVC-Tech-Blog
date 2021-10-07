@@ -8,8 +8,8 @@ router.post('/signup', async (req, res) => {
     console.log(req.body);
     const newUser = req.body;
     // password is hashed using hooks in the User model
+    newUser.password = await bcrypt.hashSync(newUser.password);
     const userData = await User.create(newUser);
-
 
     req.session.save(() => {
       req.session.loggedIn = true;
