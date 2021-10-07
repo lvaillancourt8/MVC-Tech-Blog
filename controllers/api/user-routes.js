@@ -18,7 +18,7 @@ router.post('/signup', async (req, res) => {
       req.session.userId = userData.id;
       req.session.username = userData.username;
     });
-
+    // res.json(newUser) 
     res.render('dashboard', req.session);
   } catch (err) {
     console.log(err);
@@ -44,7 +44,7 @@ router.post('/login', async (req, res) => {
     )
     // if they do not match, return error message
     if (!validPassword) {
-      res.status(400).json({ message: 'Login failed. Please try again!' });
+      res.status(400).json({ message: 'Login failed. Password Error! Please try again!' });
       return;
     }
 
