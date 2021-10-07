@@ -48,6 +48,7 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
+// GET the login page
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -57,6 +58,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// GET the signup page
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -66,6 +68,7 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+// GET the page to add a post
 router.get('/addpost', (req, res) => {
 
   res.render('add-post',{

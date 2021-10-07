@@ -4,7 +4,7 @@ const { Post, User } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
-// GET all posts for a user
+// GET all posts for a single user
 router.get('/', withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
@@ -30,8 +30,6 @@ router.get('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
 
 
 module.exports = router;

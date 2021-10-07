@@ -7,9 +7,7 @@ router.post('/signup', async (req, res) => {
   try {
     console.log(req.body);
     const newUser = req.body;
-    // hash the password from 'req.body' and save to newUser
-    newUser.password = await bcrypt.hash(req.body.password, 10);
-    // create the newUser with the hashed password and save to DB
+    // password is hashed using hooks in the User model
     const userData = await User.create(newUser);
 
 
@@ -18,7 +16,6 @@ router.post('/signup', async (req, res) => {
       req.session.userId = userData.id;
       req.session.username = userData.username;
     });
-    // res.json(newUser) 
     res.render('dashboard', req.session);
   } catch (err) {
     console.log(err);
@@ -56,7 +53,6 @@ router.post('/login', async (req, res) => {
     });
 
     // if they do match, return success message
-    console.log(userData);
     res.render('dashboard', req.session);
     // res.status(200).json({ userData, message: 'You are now logged in!' });
 

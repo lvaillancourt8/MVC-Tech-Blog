@@ -43,3 +43,4 @@ const updateFormHandler = async (event) => {
 
   const deletePost = document.querySelector('#deleteButton');
   deletePost.addEventListener('click', deleteFormHandler);
+  

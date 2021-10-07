@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// Route for creating a new blog post
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -16,6 +17,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+// Route to retrieve a single blog post in order to update it
 router.get('/update/:id', withAuth, async (req, res) => {
   try {
     const newPost = await Post.findByPk(req.params.id);
@@ -35,6 +37,7 @@ router.get('/update/:id', withAuth, async (req, res) => {
   }
 });
 
+// Route to update a single blog post
 router.put('/update/:id', withAuth, async (req, res) => {
   try {
     const updatePost = await Post.update({
@@ -52,25 +55,7 @@ router.put('/update/:id', withAuth, async (req, res) => {
   }
 });
 
-// router.put('/:id', withAuth, async (req, res) => {
-//     try {
-//       console.log(req.body);
-//       const newPost = await Post.update(req.body, {
-//           where: {
-//             id: req.params.id
-//           }
-//       });
-//       if(newPost) {
-//         res.render('dashboard');
-//       }
-//       else {
-//         res.status(404).end();
-//       }
-//     } catch (err) {
-//       res.status(400).json(err);
-//     }
-//   });
-
+// Route to delet a single blog post
   router.delete('/delete/:id', withAuth, async (req, res) => {
     try {
       const deletePost = await Post.destroy({
