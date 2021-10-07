@@ -14,9 +14,10 @@ router.post('/signup', async (req, res) => {
       req.session.loggedIn = true;
       req.session.userId = userData.id;
       req.session.username = userData.username;
+      res.status(200).json(userData);
     });
 
-    res.render('dashboard', req.session);
+    // res.render('dashboard', req.session);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -50,12 +51,8 @@ router.post('/login', async (req, res) => {
       req.session.userId = userData.id;
       req.session.username = userData.username;
       console.log(req.session);
+      res.json({ user: userData, message: 'You are now logged in!' });
     });
-
-    // if they do match, return success message
-    res.render('dashboard', req.session);
-    // res.status(200).json({ userData, message: 'You are now logged in!' });
-
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
