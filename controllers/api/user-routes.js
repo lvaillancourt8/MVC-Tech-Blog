@@ -16,6 +16,7 @@ router.post('/signup', async (req, res) => {
       req.session.userId = userData.id;
       req.session.username = userData.username;
     });
+    
     res.render('dashboard');
   } catch (err) {
     console.log(err);
