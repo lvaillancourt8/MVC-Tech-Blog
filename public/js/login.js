@@ -42,8 +42,8 @@ const loginFormHandler = async (event) => {
     }
   };
 
-  const login = document.querySelector('#login-form');
-  login.addEventListener('submit', loginFormHandler);
+document.querySelector('#login-form');
+document.addEventListener('submit', loginFormHandler);
 
-  const signup = document.querySelector('#signup-form');
-  signup.addEventListener('submit', signupFormHandler);
+document.querySelector('#signup-form');
+document.addEventListener('submit', signupFormHandler);
