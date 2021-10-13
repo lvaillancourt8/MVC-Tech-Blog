@@ -11,7 +11,9 @@ router.post('/', withAuth, async (req, res) => {
         contents: req.body.contents,
         post_creator_id: req.session.userId,
     });
-    res.render('dashboard');
+    res.render('dashboard', {
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -48,14 +50,16 @@ router.put('/update/:id', withAuth, async (req, res) => {
         id: req.params.id
       }
     });
-    res.render('dashboard');
+      res.render('dashboard', {
+        loggedIn: req.session.loggedIn,
+      })
   }
   catch (err) {
     res.status(400).json(err);
   }
 });
 
-// Route to delet a single blog post
+// Route to delete a single blog post
   router.delete('/delete/:id', withAuth, async (req, res) => {
     try {
       const deletePost = await Post.destroy({
@@ -64,7 +68,9 @@ router.put('/update/:id', withAuth, async (req, res) => {
         }
       });
       if(deletePost) {
-        res.status(200).end();
+        res.render('dashboard', {
+          loggedIn: false,
+        });
       }
       else {
         res.status(404).end();
